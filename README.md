@@ -1,4 +1,4 @@
-# crew-collective-cafe
+# webpack static starter
 A static site starter kit.
 
 ## Dependencies
