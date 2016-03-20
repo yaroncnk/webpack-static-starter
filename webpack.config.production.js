@@ -14,7 +14,7 @@ config.module.loaders = [].concat(
     loader: ExtractTextPlugin.extract("style-loader", "css-loader?minimize!postcss-loader!less-loader")
   }, {
     test: /\.scss$/,
-    loader: ExtractTextPlugin.extract("style-loader", "css-loader?minimize!postcss-loader!sass-loader")
+    loaders: ExtractTextPlugin.extract("style-loader", "css-loader?minimize!postcss-loader!sass-loader")
   }]
 );
 
