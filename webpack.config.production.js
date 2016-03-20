@@ -6,17 +6,10 @@ const baseConfig = require("./webpack.config.base.js");
 
 let config = Object.create(baseConfig);
 
-// Modules
-config.module.loaders = [].concat(
-  config.module.loaders,
-  [{
-    test: /\.less$/,
-    loader: ExtractTextPlugin.extract("style-loader", "css-loader?minimize!postcss-loader!less-loader")
-  }, {
-    test: /\.scss$/,
-    loaders: ExtractTextPlugin.extract("style-loader", "css-loader?minimize!postcss-loader!sass-loader")
-  }]
-);
+// // Modules
+// config.module.loaders = [].concat(
+//   config.module.loaders, []
+// );
 
 // Plugins
 config.plugins = [].concat(

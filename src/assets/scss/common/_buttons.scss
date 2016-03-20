@@ -1,0 +1,33 @@
+button.btn {
+  padding: $input-padding;
+  border: 2px solid white;
+  background: white;
+  text-transform: capitalize;
+  margin-top: rem(20);
+
+  &:focus {
+    outline: none;
+  }
+
+  &.var-1 {
+    background: $color-1;
+    border: 2px solid $color-1;
+    color: white;
+  }
+
+  &.var-2 {
+    background: $color-5;
+    border: 2px solid $color-5;
+    color: white;
+  }
+
+  &.var-3 {
+    background: white;
+    color: $color-1;
+  }
+
+  &.var-4 {
+    background: white;
+    color: $color-5;
+  }
+}

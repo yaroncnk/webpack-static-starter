@@ -1,5 +1,4 @@
 // Compile css with webpack
-require('../less/main.less');
 require('../scss/main.scss');
 
 // Watch markup

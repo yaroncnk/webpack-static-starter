@@ -1,7 +1,11 @@
+
+'use strict';
+
 const path = require("path");
 const webpack = require("webpack");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
+const bourbon = require('node-bourbon').includePaths;
 
 module.exports = {
   entry: [
@@ -23,6 +27,9 @@ module.exports = {
     }, {
       test: /\.html$/,
       loader: "raw-loader"
+    },
+    {  test: /\.scss$/,
+      loader: ExtractTextPlugin.extract("style-loader", `css-loader?minimize!postcss-loader!sass-loader?outputStyle=expanded&includePaths[]=${bourbon}`)
     }]
   },
   plugins: [

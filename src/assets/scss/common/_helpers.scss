@@ -1,0 +1,69 @@
+.overlay {
+  @include position(absolute, 0 auto auto 0);
+  @include size(100% 100%);
+  background: rgba(0,0,0,0.8);
+}
+
+span.footnote {
+  @include text-dark;
+  a {
+    border-bottom: 1px solid white;
+    padding-bottom: rem(5);
+    color: inherit;
+  }
+}
+
+.separator-block {
+  .statement {
+    // @include position(absolute, 50% auto auto 50%);
+    // @include transform(translateY(-50%) translateX(-50%));
+    display: block;
+    @include size(100% auto);
+    padding: $global-container-padding;
+    max-width: $global-content-max-width;
+    margin: 0 auto;
+    text-align: center;
+    line-height: 2;
+    @include MQ(M) {
+      max-width: $global-content-max-width*2;
+    }
+    h2 {
+      color: $color-6;
+    }
+    .delta {
+      @include text-dark;
+    }
+    button {
+      margin-top: rem(40);
+    }
+  }
+}
+
+.image-separator {
+  @include size(100% 801px);
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  .statement {
+    @include position(absolute, 50% auto auto 50%);
+    @include transform(translateY(-50%) translateX(-50%));
+    @include size(100% auto);
+    padding: $global-container-padding;
+    max-width: $global-content-max-width;
+    text-align: center;
+    line-height: 2;
+    @include MQ(M) {
+      max-width: $global-content-max-width*2;
+    }
+    .delta {
+      @include text-mute;
+    }
+    button {
+      margin-top: rem(40);
+    }
+  }
+  span.footnote {
+    @include position(absolute, 90% auto auto 50%);
+    @include transform(translateY(-10%) translateX(-50%));
+  }
+}

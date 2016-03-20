@@ -1,0 +1,18 @@
+$input-padding: rem(15);
+.input-group {
+  margin-top: rem(15);
+  @include clearfix();
+  input {
+    padding: $input-padding;
+    outline: none;
+    border: 2px solid white;
+    color: white;
+    @include placeholder {
+      @include text-mute;
+    }
+    &.transparent {
+      background: none;
+    }
+  }
+
+}
