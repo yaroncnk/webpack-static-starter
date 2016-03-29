@@ -1,27 +1,26 @@
 "use strict";
 
 const webpack = require("webpack");
-const LiveReloadPlugin = require("webpack-livereload-plugin");
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const baseConfig = require("./webpack.config.base.js");
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 let config = Object.create(baseConfig);
 
-// Modules
-// Modules
-// config.module.loaders = [].concat(
-//   config.module.loaders,
-//   []
-// );
+config.entry = [].concat(
+  config.entry, ['webpack-hot-middleware/client?reload=true']
+);
+
+config.output = Object.assign(config.output, {
+  filename: '[name]-[hash].js',
+});
 
 // Plugins
 config.plugins = [].concat(
-  config.plugins,
-  [
-    new LiveReloadPlugin({
-      port: 35729,
-      appendScriptTag: true
-    })
+  config.plugins, [
+    new ExtractTextPlugin("[name]-[hash].css"),
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin()
   ]
 );
 

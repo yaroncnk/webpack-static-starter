@@ -1,18 +1,18 @@
-
 'use strict';
 
 const path = require("path");
 const webpack = require("webpack");
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const CopyPlugin = require("copy-webpack-plugin");
 const bourbon = require('node-bourbon').includePaths;
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
   entry: [
-    "./src/assets/js/index.js"
+    path.join(__dirname, 'src/assets/js/index.js')
   ],
   output: {
-    path: path.join(__dirname, "dist/js"),
+    path: path.join(__dirname, "dist/"),
     filename: "main.js"
   },
   module: {
@@ -27,21 +27,38 @@ module.exports = {
     }, {
       test: /\.html$/,
       loader: "raw-loader"
-    },
-    {  test: /\.scss$/,
+    }, {
+      test: /\.scss$/,
       loader: ExtractTextPlugin.extract("style-loader", `css-loader?minimize!postcss-loader!sass-loader?outputStyle=expanded&includePaths[]=${bourbon}`)
     }]
   },
   plugins: [
-    new ExtractTextPlugin("../css/[name].css"),
-    new CopyPlugin([
-      { from: "src/html", to: "../" },
-      { from: "src/assets/img", to: "../img" }
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false
+      }
+    }),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
+    }),
+    new HtmlWebpackPlugin({
+      template: 'src/html/index.html',
+      inject: 'body'
+    }),
+    new CopyPlugin([{
+        from: "src/html",
+        to: "../"
+      }, {
+        from: "src/assets/img",
+        to: "../img"
+      }
       // Any other files you'd like to copy from src to dist can be specified
       // here. :)
     ])
   ],
   postcss: [
-    require('autoprefixer')({browsers: '> 1%'})
+    require('autoprefixer')({
+      browsers: '> 1%'
+    })
   ]
 };
