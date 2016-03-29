@@ -6,9 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:dev": "webpack --config webpack.config.development.js",
-    "build:prod": "webpack --config webpack.config.production.js",
+    "build:prod": "npm run clear && webpack --config webpack.config.production.js",
     "build:watch": "npm run build:dev -- --watch",
-    "dev": "npm run clear && parallelshell 'npm run build:watch' 'npm start'",
+    "dev": "npm run clear && npm start",
     "start": "nodemon dev-server",
     "postinstall": "npm run build:dev",
     "clear": "rm -rf dist",

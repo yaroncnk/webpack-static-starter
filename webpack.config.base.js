@@ -8,12 +8,13 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
+  devtool: 'eval-source-map',
   entry: [
     path.join(__dirname, 'src/assets/js/index.js')
   ],
   output: {
-    path: path.join(__dirname, "dist/"),
-    filename: "main.js"
+    path: path.join(__dirname, "/dist/"),
+    publicPath: '/'
   },
   module: {
     loaders: [{
@@ -33,28 +34,25 @@ module.exports = {
     }]
   },
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
+    }),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
         warnings: false
       }
     }),
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
-    }),
-    new HtmlWebpackPlugin({
-      template: 'src/html/index.html',
-      inject: 'body'
-    }),
-    new CopyPlugin([{
-        from: "src/html",
-        to: "../"
-      }, {
+    new CopyPlugin([
+      {
         from: "src/assets/img",
-        to: "../img"
+        to: "../dist/img"
       }
-      // Any other files you'd like to copy from src to dist can be specified
-      // here. :)
-    ])
+    ]),
+    new HtmlWebpackPlugin({
+      template: path.join(__dirname, 'src/html/index.html'),
+      inject: 'body',
+      filename: 'index.html'
+    })
   ],
   postcss: [
     require('autoprefixer')({

@@ -2,7 +2,9 @@
 
 const webpack = require("webpack");
 const baseConfig = require("./webpack.config.base.js");
+const path = require("path");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 let config = Object.create(baseConfig);
 
