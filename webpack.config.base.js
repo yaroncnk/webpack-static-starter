@@ -18,20 +18,22 @@ module.exports = {
   },
   module: {
     loaders: [{
-      test: /\.js$/,
-      loader: "babel-loader",
-      exclude: /node_modules/,
-      query: {
-        cacheDirectory: true,
-        presets: ["es2015"]
+        test: /\.js$/,
+        loader: "babel-loader",
+        exclude: /node_modules/,
+        query: {
+          cacheDirectory: true,
+          presets: ["es2015"]
+        }
+      }, {
+        test: /\.html$/,
+        loader: "raw-loader"
+      },
+      {
+        test: /\.scss$/,
+        loader: ExtractTextPlugin.extract("style-loader", `css-loader?minimize!postcss-loader!sass-loader?outputStyle=expanded&includePaths[]=${bourbon}`)
       }
-    }, {
-      test: /\.html$/,
-      loader: "raw-loader"
-    }, {
-      test: /\.scss$/,
-      loader: ExtractTextPlugin.extract("style-loader", `css-loader?minimize!postcss-loader!sass-loader?outputStyle=expanded&includePaths[]=${bourbon}`)
-    }]
+    ]
   },
   plugins: [
     new webpack.DefinePlugin({
@@ -42,14 +44,12 @@ module.exports = {
         warnings: false
       }
     }),
-    new CopyPlugin([
-      {
-        from: "src/assets/img",
-        to: "../dist/img"
-      }
-    ]),
+    new CopyPlugin([{
+      from: "src/assets/img",
+      to: "../dist/img"
+    }]),
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, 'src/html/index.html'),
+      template: path.join(__dirname, 'src/views/index.html'),
       inject: 'body',
       filename: 'index.html'
     })
