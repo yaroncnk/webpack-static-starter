@@ -34,8 +34,6 @@
 
                 <th>Email</th>
                 <th>Graduation</th>
-                <th>Industry</th>
-                <th>LinkedIn</th>
                 <th>Location</th>
                 <th>Title</th>
 
@@ -61,6 +59,27 @@
 
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
   <script src="http://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+  <style>
+    div.material-table table th:first-child {
+      width: 120px;
+    }
+    div.material-table table th:nth-child(2) {
+      width: 135px;
+    }
+    div.material-table table th:nth-child(3) {
+      width: 161px;
+    }
+
+    div.material-table table th:nth-child(4) {
+      width: 125px;
+    }
+    div.material-table table th:nth-child(5) {
+      width: 85px;
+    }
+    div.material-table table th:nth-child(6) {
+      width: 105px;
+    }
+  </style>
   <script>
     (function(window, document, undefined) {
 
@@ -253,10 +272,8 @@
                     '<td>' + item.Chapter + '</td>' +
                     '<td>' + item['Company/Organization'] + '</td>' +
                     '<td>' + item.Degree + '</td>' +
-                    '<td>' + item.Email + '</td>' +
+                    '<td> <a href=mailto:' + item.Email + ' target="_top" style="display:block; padding-top: 4px;"><img src="https://lh4.ggpht.com/7thmhSNgU_SlkH6wcSSX9zrS0I7RwLEWnW9KLkC-W-Lwshd8znwf5ssT3DceLo3er14=w300" alt="" style="max-width: 25px;" /></a></td>' +
                     '<td>' + item['Graduation Year'] + '</td>' +
-                    '<td>' + item.Industry + '</td>' +
-                    '<td>' + item['LinkedIN Profile'] + '</td>' +
                     '<td>' + item.Location + '</td>' +
                     '<td>' + item.Title + '</td>' +
                   '</tr>');
