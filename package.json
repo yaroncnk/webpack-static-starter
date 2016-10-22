@@ -13,7 +13,7 @@
     "postinstall": "npm run build:dev",
     "clear": "rm -rf dist",
     "cp:cname": "cp CNAME dist/CNAME",
-    "deploy": "npm run clear && npm run build:prod && npm run cp:cname && surge dist",
+    "deploy": "npm run clear && npm run build:prod && netlify deploy",
     "lint": "eslint ."
   },
   "repository": {
