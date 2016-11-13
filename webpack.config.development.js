@@ -9,21 +9,32 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 let config = Object.create(baseConfig);
 
 config.entry = [].concat(
-  config.entry, ['webpack-hot-middleware/client?reload=true']
+	config.entry, ['webpack-hot-middleware/client?reload=true']
 );
 
 config.output = Object.assign(config.output, {
-  filename: '[name]-[hash].js',
+	filename: '[name]-[hash].js',
 });
+
+config.module.loaders = [].concat(
+	config.module.loaders, [
+		{
+			test: /\.css$/,
+			loaders: [
+				'style-loader',
+				'css-loader',
+				'postcss-loader'
+			]
+		}
+	]
+);
 
 // Plugins
 config.plugins = [].concat(
-  config.plugins, [
-    new ExtractTextPlugin("[name]-[hash].css"),
-    new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
-  ]
+	config.plugins, [
+		new webpack.HotModuleReplacementPlugin(),
+		new webpack.NoErrorsPlugin(),
+	]
 );
 
 module.exports = config;

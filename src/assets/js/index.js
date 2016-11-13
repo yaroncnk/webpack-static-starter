@@ -1,5 +1,5 @@
 // Compile css with webpack
-require('../scss/main.scss');
+require('../css/main.css');
 
 // Watch markup
 if (process.env.NODE_ENV !== 'production') {

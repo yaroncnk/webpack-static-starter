@@ -17,16 +17,11 @@
     "lint": "eslint ."
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/CrewLabs/statik.git"
-  },
-  "author": "Naoufal Kadhom <naoufal@unsplash.com>",
-  "bugs": {
-    "url": "https://github.com/CrewLabs/statik/issues"
+    "type": "git"
   },
   "homepage": "https://github.com/CrewLabs/statik#readme",
   "devDependencies": {
-    "autoprefixer": "^6.3.1",
+    "autoprefixer": "6.5.3",
     "babel-core": "^6.4.5",
     "babel-eslint": "^5.0.0",
     "babel-loader": "^6.2.2",
@@ -37,19 +32,23 @@
     "eslint-config-unsplash": "^0.1.4",
     "eslint-plugin-react": "^3.16.1",
     "express": "^4.13.4",
-    "extract-text-webpack-plugin": "^1.0.1",
+    "extract-text-webpack-plugin": "2.0.0-beta.4",
     "html-webpack-plugin": "2.14.0",
-    "less-loader": "^2.2.2",
-    "node-bourbon": "4.2.7",
     "node-sass": "^3.4.2",
     "nodemon": "^1.8.1",
     "parallelshell": "^2.0.0",
-    "postcss-loader": "^0.8.0",
+    "postcss-browser-reporter": "0.5.0",
+    "postcss-cssnext": "2.8.0",
+    "postcss-loader": "0.8.2",
+    "postcss-reporter": "2.0.0",
+    "postcss-smart-import": "0.5.1",
+    "precss": "1.4.0",
     "raw-loader": "^0.5.1",
     "sass-loader": "^3.1.2",
     "style-loader": "^0.13.0",
     "surge": "^0.17.7",
-    "webpack": "^1.12.13",
+    "url-loader": "0.5.7",
+    "webpack": "2.1.0-beta.25",
     "webpack-dev-middleware": "1.6.1",
     "webpack-hot-middleware": "2.10.0"
   },
