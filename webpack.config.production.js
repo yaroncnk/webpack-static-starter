@@ -13,7 +13,7 @@ config.module.loaders = [].concat(
 	config.module.loaders, [{
 		test: /\.css$/,
 		loader: ExtractTextPlugin.extract({
-			fallbackLoader: "style-loader",
+			fallbackLoader: "style",
 			loader: ['css-loader', 'postcss-loader']
 		})
 	}]
@@ -32,7 +32,8 @@ config.plugins = [].concat(
 			warnings: false,
 			screw_ie8: true
 		}
-	})
+	}),
+	new InlineManifestWebpackPlugin(),
 );
 
 module.exports = config;
